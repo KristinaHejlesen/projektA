@@ -5,10 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./assets/CSS/style.css">
-    <script src="./assets/JS/app.js"defer></script>
+    <script src="./assets/JS/app.js" defer></script>
 </head>
 
 <body>
+    <h1>Sten, saks, papir spil</h1>
+    <p>Start spillet ved at trykke på sten, saks eller papir og se din score løbende forneden</p>
+    <button class="valgbtn" id="sten" ><img src="./assets/img/saks.svg" alt="sten">Sten</button>
+    <button class="valgbtn" id="saks" ><img src="./assets/img/saks.svg" alt="saks">Saks</button>
+    <button class="valgbtn" id="papir"><img src="./assets/img/saks.svg" alt="papir">Papir</button>
     
+    <div id="svar">
+        <p>Computeren valgte:</p>
+        <div id="computerValg"></div>
+        <p>Du valgte:</p>
+        <div id="computerValg"></div>
+        <p>Resultat:</p>
+            <div id="resultat"></div>
+    </div>
+    <div id="resultatBoks">
+            <p>Din score vs computeren:</p>
+            <div id="score"></div>
+    </div>
+    <div>
+        <button id="nytspil">Nyt spil</button>
+    </div>
 </body>
 </html>
