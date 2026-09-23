@@ -13,6 +13,7 @@ console.log("Js virker");
         knap.addEventListener("click", function(){
             // gemmer brugernes valg
             const brugerValg = knap.id;
+            
             // tjekker i konsolen at det virker og udskriver brugerens valg ved klik, senere skal den kører en funktion ved klik
             console.log(brugerValg);
             // når brugeren klikker på en af knapperne skal "computeren" foretage sit valg, derfor kaldes funktionen computervalg, det valg gemmes i en variabel GemtPCValg så det kan anvendes til sammenligning.
@@ -33,11 +34,31 @@ function computerValg(){
 // tester min funktion virker, hvad udskriver den i konsollen.
 console.log(computerValg());
 
-/*Er nået her til!! */
 //  sammenlign de to valg med hinanden, hvem vinder if/else
-function sammenlignValg (){
-
+function sammenlignValg (brugerValg, PCvalg){
+    // hvis computer og bruger vælger det samme, skal teksten uafgjort returneres
+    if(PCvalg === brugerValg) {
+        return "uafgjort!"
+    }
+    // hvis PCvalg vælger sten og bruger vælger saks, computeren vinder. er skrevet med && der betyder "og", samt || i mellem hver betingelse der betyder "eller", hvis det ikke er en af disse så skal der returnes "Du vandt" da brugeren vinder i de andre valgmuligheder.
+if(
+    (PCvalg === "sten" && brugerValg === "saks") ||
+    (PCvalg === "papir" && brugerValg === "sten") ||
+    (PCvalg === "saks" && brugerValg === "papir")
+){
+        return "Computeren vandt!"
+    } else
+    {
+        return "Du vandt!"
+    }
 }
+// test af funktionen
+console.log(sammenlignValg("sten", "saks")); //output skal være "du vandt!" - det virker
+console.log(sammenlignValg("papir", "saks")); //output skal være "computer vandt!" -det virker
+
+// er nået her til!
 // opdater score, en tæller
+let tællerPC = 0; 
+let tællerBruger = 0;
 
 // Vis resultat på siden, opdatere DOM
