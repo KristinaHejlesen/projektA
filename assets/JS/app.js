@@ -1,13 +1,10 @@
 console.log("Js virker");
 
-// hvilken knap har brugeren trykket på, lyt efter click
-// hver enkelt knap
-// const sten = document.getElementById("sten");
-// sten.addEventListener("click", function() {
-    //     const valg = "sten";
-    //     console.log(valg);
-    // })
-    // istedet henter jeg alle knapper på en gang
+
+    // opdater score, en tæller. Har flyttet denne her op da det er nemmere at læse, variabler kunne godt stå i bunden, da hele scriptet er kørt inden brugeren klikker på en knap.
+    let tællerPC = 0; 
+    let tællerBruger = 0;
+    // lytter efter klik på de tre knapper
     const knapper = document.querySelectorAll(".valgbtn");
     knapper.forEach(function(knap){
         knap.addEventListener("click", function(){
@@ -20,9 +17,21 @@ console.log("Js virker");
             const GemtPCValg = computerValg();
             // tester det i konsolen at det bliver gemt
             console.log('GemtPCValg:', GemtPCValg);
+            // gemmer resultatet fra sammenlignValg funktionen i resultat
+            const resultat = sammenlignValg(brugerValg, GemtPCValg);
+            console.log('resultat:', resultat)
+            // sammenligner resultatet med computer eller bruger der vandt og lægger en til tælleren. uafgjort så sker der ikke noget.
+            if(resultat === "Computeren vandt!"){
+                tællerPC++
+            } else if (resultat === "Du vandt!"){
+                tællerBruger++
+            } else if(resultat === "uafgjort!"){
+
+            }
+            console.log(tællerBruger); //test af tæller
+            
     })
 })
-
 // generer et tilfældigt valg fra computeren math.random
 const valg = ["sten", "saks", "papir"];
 function computerValg(){
@@ -56,9 +65,8 @@ if(
 console.log(sammenlignValg("sten", "saks")); //output skal være "du vandt!" - det virker
 console.log(sammenlignValg("papir", "saks")); //output skal være "computer vandt!" -det virker
 
-// er nået her til!
-// opdater score, en tæller
-let tællerPC = 0; 
-let tællerBruger = 0;
+// opdater score, en tæller.
+// flyttet op for læsbarhedens skyld
 
+// er nået her til!
 // Vis resultat på siden, opdatere DOM
