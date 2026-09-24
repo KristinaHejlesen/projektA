@@ -1,4 +1,4 @@
-console.log("Js virker");
+
 // flyttet op og ud af funktionen update score, da disse skal bruges af flere funktioner.
 const pcValgVisning = document.getElementById("computerRes");
 const brugerValgVisning = document.getElementById("brugerRes");
@@ -14,16 +14,10 @@ const scoreVisning = document.getElementById("score");
         knap.addEventListener("click", function(){
             // gemmer brugernes valg
             const brugerValg = knap.id;
-            
-            // tjekker i konsolen at det virker og udskriver brugerens valg ved klik, senere skal den kører en funktion ved klik
-            console.log(brugerValg);
             // når brugeren klikker på en af knapperne skal "computeren" foretage sit valg, derfor kaldes funktionen computervalg, det valg gemmes i en variabel GemtPCValg så det kan anvendes til sammenligning.
             const GemtPCValg = computerValg();
-            // tester det i konsolen at det bliver gemt
-            console.log('GemtPCValg:', GemtPCValg);
             // gemmer resultatet fra sammenlignValg funktionen i resultat
             const resultat = sammenlignValg(brugerValg, GemtPCValg);
-            console.log('resultat:', resultat)
             // sammenligner resultatet med computer eller bruger der vandt og lægger en til tælleren. uafgjort så sker der ikke noget.
             if(resultat === "Computeren vandt!"){
                 tællerPC++
@@ -32,8 +26,6 @@ const scoreVisning = document.getElementById("score");
             } else if(resultat === "uafgjort!"){
 
             }
-            console.log(tællerBruger); //test af tæller
-            // kalder funktionen der opdatere DOM
             updateScore(brugerValg, resultat, GemtPCValg);
     })
 })
@@ -45,8 +37,6 @@ function computerValg(){
     // anvender return til at returnere værdien af PCvalg, altså det nummer i mit array som math.random har vlagt
     return valg[PCvalg];
 }
-// tester min funktion virker, hvad udskriver den i konsollen.
-console.log(computerValg());
 
 //  sammenlign de to valg med hinanden, hvem vinder if/else
 function sammenlignValg (brugerValg, PCvalg){
@@ -66,31 +56,32 @@ if(
         return "Du vandt!"
     }
 }
-// test af funktionen
-console.log(sammenlignValg("sten", "saks")); //output skal være "du vandt!" - det virker
-console.log(sammenlignValg("papir", "saks")); //output skal være "computer vandt!" -det virker
 
 // opdater score, en tæller.
-// flyttet op for læsbarhedens skyld
-
-// er nået her til!
 // Vis resultat på siden, opdatere DOM
 function updateScore(brugerValg, resultat, GemtPCValg){
+    // anvender textContent til at indsætte computerens valg
 pcValgVisning.textContent = `${GemtPCValg}`;
+// anvender textContent til at indsætte brugerens valg
 brugerValgVisning.textContent = `${brugerValg}`;
+// anvender textContent til at indsætte resultatet fra sammenlignings funktionen
 resultatVisning.textContent = `${resultat}`;
 scoreVisning.textContent = `Computer score: ${tællerPC} Din score: ${tællerBruger}`;
 }
+
 // nyt spil
 function nytSpil(){
+    // henter element knappen med nyt spil via ID
     const nytSpilBtn = document.getElementById("nytspil");
+    // lytter efter klik på knappen og nulstiller begge tæller, samt opdater DOM
     nytSpilBtn.addEventListener("click", function(){
         tællerPC = 0; 
         tællerBruger = 0;
         pcValgVisning.textContent = "";
 brugerValgVisning.textContent = "";
 resultatVisning.textContent = "";
-scoreVisning.textContent = `Computer score: ${tællerPC} Din score: ${tællerBruger}`;
+scoreVisning.textContent = `Computer score:${tællerPC} Din score: ${tællerBruger}`;
     })
 }
+// kalder funktionen
 nytSpil();
