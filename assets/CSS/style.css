@@ -4,6 +4,7 @@
 #svar{
     display: flex;
     gap: 1rem;
+    
 }
 #resultatBoks{
     border: 2px black solid;
@@ -35,4 +36,7 @@
     padding: 0.5rem;
     background-color: green;
     color: white;
+}
+#computerRes, #brugerRes, #resultat, #score {
+    margin: 1rem;
 }

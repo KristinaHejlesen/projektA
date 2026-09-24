@@ -1,5 +1,9 @@
 console.log("Js virker");
-
+// flyttet op og ud af funktionen update score, da disse skal bruges af flere funktioner.
+const pcValgVisning = document.getElementById("computerRes");
+const brugerValgVisning = document.getElementById("brugerRes");
+const resultatVisning = document.getElementById("resultat");
+const scoreVisning = document.getElementById("score");
 
     // opdater score, en tæller. Har flyttet denne her op da det er nemmere at læse, variabler kunne godt stå i bunden, da hele scriptet er kørt inden brugeren klikker på en knap.
     let tællerPC = 0; 
@@ -29,7 +33,8 @@ console.log("Js virker");
 
             }
             console.log(tællerBruger); //test af tæller
-            
+            // kalder funktionen der opdatere DOM
+            updateScore(brugerValg, resultat, GemtPCValg);
     })
 })
 // generer et tilfældigt valg fra computeren math.random
@@ -70,3 +75,22 @@ console.log(sammenlignValg("papir", "saks")); //output skal være "computer vand
 
 // er nået her til!
 // Vis resultat på siden, opdatere DOM
+function updateScore(brugerValg, resultat, GemtPCValg){
+pcValgVisning.textContent = `${GemtPCValg}`;
+brugerValgVisning.textContent = `${brugerValg}`;
+resultatVisning.textContent = `${resultat}`;
+scoreVisning.textContent = `Computer score: ${tællerPC} Din score: ${tællerBruger}`;
+}
+// nyt spil
+function nytSpil(){
+    const nytSpilBtn = document.getElementById("nytspil");
+    nytSpilBtn.addEventListener("click", function(){
+        tællerPC = 0; 
+        tællerBruger = 0;
+        pcValgVisning.textContent = "";
+brugerValgVisning.textContent = "";
+resultatVisning.textContent = "";
+scoreVisning.textContent = `Computer score: ${tællerPC} Din score: ${tællerBruger}`;
+    })
+}
+nytSpil();
